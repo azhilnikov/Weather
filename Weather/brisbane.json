@@ -1,0 +1,48 @@
+{
+  "longDescription": "Dry and hot", 
+  "feelsLike": 19.48, 
+  "rainChance": 62, 
+  "humidity": 27, 
+  "airPressure": "1019 hPa", 
+  "wind": {
+    "direction": "South East", 
+    "speed": 13.93
+  }, 
+  "sevenDay": {
+    "Monday": {
+      "minTemp": 18.02, 
+      "maxTemp": 18.97, 
+      "shortDescription": "Overcast"
+    }, 
+    "Tuesday": {
+      "minTemp": 18.24, 
+      "maxTemp": 27.14, 
+      "shortDescription": "Raining"
+    }, 
+    "Friday": {
+      "minTemp": -0.8, 
+      "maxTemp": 40.67, 
+      "shortDescription": "Drizzle"
+    }, 
+    "Wednesday": {
+      "minTemp": 9.86, 
+      "maxTemp": 33.14, 
+      "shortDescription": "Drizzle"
+    }, 
+    "Thursday": {
+      "minTemp": 10.68, 
+      "maxTemp": 20.2, 
+      "shortDescription": "Sunny"
+    }, 
+    "Sunday": {
+      "minTemp": -0.95, 
+      "maxTemp": 36.48, 
+      "shortDescription": "Raining"
+    }, 
+    "Saturday": {
+      "minTemp": 6.67, 
+      "maxTemp": 29.04, 
+      "shortDescription": "Drizzle"
+    }
+  }
+}

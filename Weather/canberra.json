@@ -1,0 +1,48 @@
+{
+  "longDescription": "Clear skies", 
+  "feelsLike": 32.26, 
+  "rainChance": 10, 
+  "humidity": 75, 
+  "airPressure": "1009 hPa", 
+  "wind": {
+    "direction": "West", 
+    "speed": 25.73
+  }, 
+  "sevenDay": {
+    "Monday": {
+      "minTemp": -3.83, 
+      "maxTemp": 7.87, 
+      "shortDescription": "Drizzle"
+    }, 
+    "Tuesday": {
+      "minTemp": 17.34, 
+      "maxTemp": 34.64, 
+      "shortDescription": "Sunny"
+    }, 
+    "Friday": {
+      "minTemp": -3.82, 
+      "maxTemp": 24.13, 
+      "shortDescription": "Cloudy"
+    }, 
+    "Wednesday": {
+      "minTemp": 15.41, 
+      "maxTemp": 29.18, 
+      "shortDescription": "Sunny"
+    }, 
+    "Thursday": {
+      "minTemp": 6.65, 
+      "maxTemp": 36.38, 
+      "shortDescription": "Drizzle"
+    }, 
+    "Sunday": {
+      "minTemp": 14.06, 
+      "maxTemp": 36.46, 
+      "shortDescription": "Overcast"
+    }, 
+    "Saturday": {
+      "minTemp": 18.34, 
+      "maxTemp": 34.12, 
+      "shortDescription": "Sunny"
+    }
+  }
+}

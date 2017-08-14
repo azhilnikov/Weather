@@ -1,0 +1,48 @@
+{
+  "longDescription": "Showers with a chance of storms", 
+  "feelsLike": 19.06, 
+  "rainChance": 8, 
+  "humidity": 78, 
+  "airPressure": "1004 hPa", 
+  "wind": {
+    "direction": "South East", 
+    "speed": 14.2
+  }, 
+  "sevenDay": {
+    "Monday": {
+      "minTemp": 12.88, 
+      "maxTemp": 28.76, 
+      "shortDescription": "Sunny"
+    }, 
+    "Tuesday": {
+      "minTemp": 16.35, 
+      "maxTemp": 24.8, 
+      "shortDescription": "Sunny"
+    }, 
+    "Friday": {
+      "minTemp": 3.67, 
+      "maxTemp": 5.05, 
+      "shortDescription": "Overcast"
+    }, 
+    "Wednesday": {
+      "minTemp": 2.32, 
+      "maxTemp": 41.21, 
+      "shortDescription": "Raining"
+    }, 
+    "Thursday": {
+      "minTemp": 14.0, 
+      "maxTemp": 37.01, 
+      "shortDescription": "Overcast"
+    }, 
+    "Sunday": {
+      "minTemp": 13.66, 
+      "maxTemp": 14.28, 
+      "shortDescription": "Overcast"
+    }, 
+    "Saturday": {
+      "minTemp": 7.13, 
+      "maxTemp": 14.01, 
+      "shortDescription": "Sunny"
+    }
+  }
+}

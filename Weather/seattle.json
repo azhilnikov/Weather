@@ -1,0 +1,48 @@
+{
+  "longDescription": "Bright and breezy", 
+  "feelsLike": 32.18, 
+  "rainChance": 73, 
+  "humidity": 33, 
+  "airPressure": "1009 hPa", 
+  "wind": {
+    "direction": "North", 
+    "speed": 0.05
+  }, 
+  "sevenDay": {
+    "Monday": {
+      "minTemp": 18.21, 
+      "maxTemp": 23.28, 
+      "shortDescription": "Drizzle"
+    }, 
+    "Tuesday": {
+      "minTemp": -2.51, 
+      "maxTemp": 21.16, 
+      "shortDescription": "Storms"
+    }, 
+    "Friday": {
+      "minTemp": 2.68, 
+      "maxTemp": 9.31, 
+      "shortDescription": "Cloudy"
+    }, 
+    "Wednesday": {
+      "minTemp": -0.59, 
+      "maxTemp": 16.05, 
+      "shortDescription": "Cloudy"
+    }, 
+    "Thursday": {
+      "minTemp": -0.43, 
+      "maxTemp": 1.13, 
+      "shortDescription": "Raining"
+    }, 
+    "Sunday": {
+      "minTemp": 14.17, 
+      "maxTemp": 30.54, 
+      "shortDescription": "Drizzle"
+    }, 
+    "Saturday": {
+      "minTemp": 4.54, 
+      "maxTemp": 39.81, 
+      "shortDescription": "Drizzle"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "longDescription": "Mild and overcast", 
+  "feelsLike": 19.58, 
+  "rainChance": 37, 
+  "humidity": 83, 
+  "airPressure": "1031 hPa", 
+  "wind": {
+    "direction": "North East", 
+    "speed": 20.13
+  }, 
+  "sevenDay": {
+    "Monday": {
+      "minTemp": 1.13, 
+      "maxTemp": 33.63, 
+      "shortDescription": "Sunny"
+    }, 
+    "Tuesday": {
+      "minTemp": -0.5, 
+      "maxTemp": 9.86, 
+      "shortDescription": "Storms"
+    }, 
+    "Friday": {
+      "minTemp": 12.64, 
+      "maxTemp": 26.43, 
+      "shortDescription": "Storms"
+    }, 
+    "Wednesday": {
+      "minTemp": -0.11, 
+      "maxTemp": 35.27, 
+      "shortDescription": "Storms"
+    }, 
+    "Thursday": {
+      "minTemp": 11.9, 
+      "maxTemp": 25.17, 
+      "shortDescription": "Sunny"
+    }, 
+    "Sunday": {
+      "minTemp": 3.73, 
+      "maxTemp": 39.15, 
+      "shortDescription": "Windy"
+    }, 
+    "Saturday": {
+      "minTemp": 6.24, 
+      "maxTemp": 6.76, 
+      "shortDescription": "Windy"
+    }
+  }
+}

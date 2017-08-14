@@ -1,0 +1,48 @@
+{
+  "longDescription": "Strong winds throughout the day", 
+  "feelsLike": 22.44, 
+  "rainChance": 32, 
+  "humidity": 43, 
+  "airPressure": "988 hPa", 
+  "wind": {
+    "direction": "South West", 
+    "speed": 20.57
+  }, 
+  "sevenDay": {
+    "Monday": {
+      "minTemp": 12.14, 
+      "maxTemp": 39.48, 
+      "shortDescription": "Windy"
+    }, 
+    "Tuesday": {
+      "minTemp": 13.03, 
+      "maxTemp": 22.09, 
+      "shortDescription": "Cloudy"
+    }, 
+    "Friday": {
+      "minTemp": 17.94, 
+      "maxTemp": 24.45, 
+      "shortDescription": "Cloudy"
+    }, 
+    "Wednesday": {
+      "minTemp": 8.64, 
+      "maxTemp": 40.08, 
+      "shortDescription": "Overcast"
+    }, 
+    "Thursday": {
+      "minTemp": -2.8, 
+      "maxTemp": 24.69, 
+      "shortDescription": "Storms"
+    }, 
+    "Sunday": {
+      "minTemp": 15.65, 
+      "maxTemp": 24.59, 
+      "shortDescription": "Cloudy"
+    }, 
+    "Saturday": {
+      "minTemp": 5.38, 
+      "maxTemp": 13.8, 
+      "shortDescription": "Sunny"
+    }
+  }
+}
