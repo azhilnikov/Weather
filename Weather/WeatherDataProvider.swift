@@ -1,5 +1,5 @@
 //
-//  WeatherDataSource.swift
+//  WeatherDataProvider.swift
 //  Weather
 //
 //  Created by Alexey on 14/8/17.
@@ -9,9 +9,13 @@
 import UIKit
 import Gloss
 
-class WeatherDataSource: NSObject, UITableViewDataSource {
+protocol WeatherDataProviderDelegate: class {
+    func didSelectCity(_ name: String)
+}
+
+class WeatherDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate {
     
-    private let countryStorage = CountryStorage()
+    weak var delegate: WeatherDataProviderDelegate?
     
     func fetchWeather() {
         if let weatherURL = Bundle.main.url(forResource: "weather", withExtension: "json"),
@@ -43,4 +47,14 @@ class WeatherDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return countryStorage.countryTitle(at: section)
     }
+    
+    // MARK: - Table view delegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cityTitle = countryStorage.cityTitle(at: indexPath) {
+            delegate?.didSelectCity(cityTitle)
+        }
+    }
+    
+    private let countryStorage = CountryStorage()
 }

@@ -82,11 +82,30 @@
                     <navigationItem key="navigationItem" title="Weather Forecast" id="UL5-Bj-nce"/>
                     <connections>
                         <outlet property="weatherTableView" destination="nbz-g3-LrH" id="our-ea-flL"/>
+                        <segue destination="yb7-KJ-e6c" kind="show" identifier="ShowDetailedForecast" id="gEi-3m-LBc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZs-Iq-JW1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="890.39999999999998" y="-85.007496251874073"/>
+        </scene>
+        <!--Detailed Weather Forecast View Controller-->
+        <scene sceneID="N8n-a8-Iu2">
+            <objects>
+                <viewController id="yb7-KJ-e6c" customClass="DetailedWeatherForecastViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KXl-8i-Bhn"/>
+                        <viewControllerLayoutGuide type="bottom" id="znZ-MF-BhR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oY2-qk-62H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="byo-5a-tXX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1910" y="-85"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wX4-KN-qEb">

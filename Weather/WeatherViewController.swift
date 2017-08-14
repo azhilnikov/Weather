@@ -12,25 +12,38 @@ class WeatherViewController: UIViewController {
     
     @IBOutlet private weak var weatherTableView: UITableView!
     
-    private let weatherDataSource = WeatherDataSource()
-    private let weatherDelegate = WeatherDelegate()
+    private let weatherDataProvider = WeatherDataProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weatherTableView.dataSource = weatherDataSource
-        weatherTableView.delegate = weatherDelegate
+        weatherTableView.dataSource = weatherDataProvider
+        weatherTableView.delegate = weatherDataProvider
+        
+        weatherDataProvider.delegate = self
         
         weatherTableView.estimatedRowHeight = 50
         weatherTableView.rowHeight = UITableViewAutomaticDimension
         weatherTableView.sectionHeaderHeight = 50
-        //weatherTableView.sectionFooterHeight = CGFloat.leastNonzeroMagnitude
         
-        weatherDataSource.fetchWeather()
+        weatherDataProvider.fetchWeather()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? DetailedWeatherForecastViewController {
+            viewController.cityName = sender as? String
+        }
+    }
+}
+
+extension WeatherViewController: WeatherDataProviderDelegate {
+    
+    func didSelectCity(_ name: String) {
+        performSegue(withIdentifier: "ShowDetailedForecast", sender: name)
     }
 }
