@@ -6,25 +6,29 @@
 //  Copyright © 2017 Alexey Zhilnikov. All rights reserved.
 //
 
-import UIKit
 import Gloss
 
 protocol WeatherDataProviderDelegate: class {
-    func didSelectCity(_ name: String)
+    func didSelectCity(_ name: String, withForecast: String)
 }
 
 class WeatherDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     weak var delegate: WeatherDataProviderDelegate?
     
-    func fetchWeather() {
-        if let weatherURL = Bundle.main.url(forResource: "weather", withExtension: "json"),
-            let weatherData = try? Data(contentsOf: weatherURL) {
-            if let json = try? JSONSerialization.jsonObject(with: weatherData, options: .allowFragments) as AnyObject {
-                if let jsonData = json as? JSON, let weather = Weather(json: jsonData) {
-                    countryStorage.parse(jsonData: weather)
-                }
+    func fetch(completion: (WeatherResult) -> Void) {
+        do {
+            let json = try JSONFileReader.readFile("weather", withExtension: "json")
+            guard let jsonData = json as? JSON, let weather = Weather(json: jsonData) else {
+                completion(.failure("Invalid JSON format"))
+                return
             }
+            
+            try countryStorage.parse(jsonData: weather)
+            completion(.success)
+        }
+        catch let error {
+            completion(.failure("\(error)"))
         }
     }
     
@@ -51,8 +55,9 @@ class WeatherDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate 
     // MARK: - Table view delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cityTitle = countryStorage.cityTitle(at: indexPath) {
-            delegate?.didSelectCity(cityTitle)
+        if let city = countryStorage.cityAt(indexPath),
+            let cityName = city.name, let forecast = city.shortDescription {
+            delegate?.didSelectCity(cityName, withForecast: forecast)
         }
     }
     

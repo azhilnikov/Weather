@@ -19,13 +19,13 @@ class CountryStorage {
         return countryDictionary.count
     }
     
-    func parse(jsonData: Weather?) {
+    func parse(jsonData: Weather?) throws {
         guard let weather = jsonData else {
-            return
+            throw WeatherResult.failure("Weather data is empty")
         }
         
         guard let cities = weather.cities else {
-            return
+            throw WeatherResult.failure("List of the cities is empty")
         }
         
         for city in cities {
@@ -45,9 +45,16 @@ class CountryStorage {
         return index < countries.count ? countries[index] : nil
     }
     
-    func cityTitle(at indexPath: IndexPath) -> String? {
-        if let city = cityAt(indexPath) {
-            return city.name
+    func cityAt(_ indexPath: IndexPath) -> City? {
+        let countryIndex = indexPath.section
+        if countryIndex < countries.count {
+            let country = countries[countryIndex]
+            if let cities = countryDictionary[country] {
+                let cityIndex = indexPath.row
+                if cityIndex < cities.count {
+                    return cities[cityIndex]
+                }
+            }
         }
         return nil
     }
@@ -79,19 +86,5 @@ class CountryStorage {
     
     private func citiesAt(_ countryIndex: Int) -> [City]? {
         return countryIndex < countries.count ? countryDictionary[countries[countryIndex]] : nil
-    }
-    
-    private func cityAt(_ indexPath: IndexPath) -> City? {
-        let countryIndex = indexPath.section
-        if countryIndex < countries.count {
-            let country = countries[countryIndex]
-            if let cities = countryDictionary[country] {
-                let cityIndex = indexPath.row
-                if cityIndex < cities.count {
-                    return cities[cityIndex]
-                }
-            }
-        }
-        return nil
     }
 }

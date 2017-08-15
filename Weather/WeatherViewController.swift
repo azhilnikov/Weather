@@ -17,16 +17,23 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weatherTableView.dataSource = weatherDataProvider
-        weatherTableView.delegate = weatherDataProvider
-        
-        weatherDataProvider.delegate = self
-        
         weatherTableView.estimatedRowHeight = 50
         weatherTableView.rowHeight = UITableViewAutomaticDimension
         weatherTableView.sectionHeaderHeight = 50
         
-        weatherDataProvider.fetchWeather()
+        weatherDataProvider.delegate = self
+        
+        weatherTableView.dataSource = weatherDataProvider
+        weatherTableView.delegate = weatherDataProvider
+        
+        weatherDataProvider.fetch { [weak self] (result) in
+            switch result {
+            case .success:
+                self?.weatherTableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,15 +42,17 @@ class WeatherViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? DetailedWeatherForecastViewController {
-            viewController.cityName = sender as? String
+        if let viewController = segue.destination as? DetailedWeatherForecastViewController,
+            let data = sender as? (name: String, forecast: String) {
+            viewController.cityName = data.name
+            viewController.shortDescription = data.forecast
         }
     }
 }
 
 extension WeatherViewController: WeatherDataProviderDelegate {
     
-    func didSelectCity(_ name: String) {
-        performSegue(withIdentifier: "ShowDetailedForecast", sender: name)
+    func didSelectCity(_ name: String, withForecast: String) {
+        performSegue(withIdentifier: "ShowDetailedForecast", sender: (name, withForecast))
     }
 }
