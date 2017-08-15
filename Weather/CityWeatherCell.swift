@@ -13,9 +13,9 @@ class CityWeatherCell: UITableViewCell {
     @IBOutlet private weak var cityLabel: UILabel!
     @IBOutlet private weak var temperatureLabel: UILabel!
     
-    func setup(_ data: CityNameTemperature?) {
-        cityLabel?.text = data?.name
-        if let temperature = data?.temperature {
+    func setup(_ city: City?) {
+        cityLabel?.text = city?.name
+        if let temperature = city?.temperature {
             temperatureLabel?.text = "\(Int(temperature))º"
         }
     }

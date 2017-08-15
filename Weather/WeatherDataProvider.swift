@@ -9,10 +9,10 @@
 import Gloss
 
 protocol WeatherDataProviderDelegate: class {
-    func didSelectCity(_ name: String, withForecast: String)
+    func didSelectCity(_ name: String, temperature: Double)
 }
 
-class WeatherDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate {
+class WeatherDataProvider: NSObject {
     
     weak var delegate: WeatherDataProviderDelegate?
     
@@ -23,14 +23,17 @@ class WeatherDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate 
                 completion(.failure("Invalid JSON format"))
                 return
             }
-            
             try countryStorage.parse(jsonData: weather)
             completion(.success)
-        }
-        catch let error {
+        } catch let error {
             completion(.failure("\(error)"))
         }
     }
+    
+    fileprivate let countryStorage = CountryStorage()
+}
+
+extension WeatherDataProvider: UITableViewDataSource {
     
     // MARK: - Table view data sources
     
@@ -44,22 +47,23 @@ class WeatherDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityWeatherCell", for: indexPath) as! CityWeatherCell
-        cell.setup(countryStorage.cityNameTemperature(indexPath: indexPath))
+        cell.setup(countryStorage.cityAt(indexPath))
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return countryStorage.countryTitle(at: section)
     }
+}
+
+extension WeatherDataProvider: UITableViewDelegate {
     
     // MARK: - Table view delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let city = countryStorage.cityAt(indexPath),
-            let cityName = city.name, let forecast = city.shortDescription {
-            delegate?.didSelectCity(cityName, withForecast: forecast)
+            let cityName = city.name, let temperature = city.temperature {
+            delegate?.didSelectCity(cityName, temperature: temperature)
         }
     }
-    
-    private let countryStorage = CountryStorage()
 }

@@ -8,11 +8,6 @@
 
 import Foundation
 
-struct CityNameTemperature {
-    let name: String?
-    let temperature: Double?
-}
-
 class CountryStorage {
     
     var numberOfCountries: Int {
@@ -55,13 +50,6 @@ class CountryStorage {
                     return cities[cityIndex]
                 }
             }
-        }
-        return nil
-    }
-    
-    func cityNameTemperature(indexPath: IndexPath) -> CityNameTemperature? {
-        if let city = cityAt(indexPath) {
-            return CityNameTemperature(name: city.name, temperature: city.temperature)
         }
         return nil
     }
