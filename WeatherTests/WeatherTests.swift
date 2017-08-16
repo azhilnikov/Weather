@@ -21,8 +21,16 @@ class WeatherTests: XCTestCase {
         super.tearDown()
     }
     
-    func testWeatherDataSource() {
-        let weatherDataSource = WeatherDataSource()
-        weatherDataSource.fetchWeather()
+    func testWeatherDataProvider() {
+        let weatherDataProvider = WeatherDataProvider()
+        weatherDataProvider.fetch { (result) in
+            switch result {
+            case .success:
+                break
+                
+            case .failure(let description):
+                XCTFail(description)
+            }
+        }
     }
 }

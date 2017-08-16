@@ -67,9 +67,9 @@ extension DetailedWeatherDataProvider: UITableViewDataSource {
         
         switch section {
         case .extraDetails:
-            return 0
+            return 1
         case .weekDays:
-            return 0
+            return 7
         }
     }
     
@@ -80,13 +80,26 @@ extension DetailedWeatherDataProvider: UITableViewDataSource {
         
         switch section {
         case .extraDetails:
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ExtraDayForecastCell",
+                                                     for: indexPath) as! ExtraDayForecastCell
+            cell.setup(rain: weekForecast?.rainChance,
+                       humidity: weekForecast?.humidity,
+                       pressure: weekForecast?.airPressure,
+                       wind: weekForecast?.wind)
+            return cell
         case .weekDays:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DayForecastCell", for: indexPath) as! DayForecastCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DayForecastCell",
+                                                     for: indexPath) as! DayForecastCell
+            cell.setupDay(weekForecast?.sevenDay?.weekDayFor(indexPath.row),
+                          forecast: weekForecast?.sevenDay?.weekDayForecastFor(indexPath.row))
             return cell
         }
     }
 }
 
 extension DetailedWeatherDataProvider: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.cellHeights
+    }
 }

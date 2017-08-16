@@ -17,9 +17,9 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weatherTableView.estimatedRowHeight = 50
+        weatherTableView.estimatedRowHeight = Constants.cellHeights
         weatherTableView.rowHeight = UITableViewAutomaticDimension
-        weatherTableView.sectionHeaderHeight = 50
+        weatherTableView.sectionHeaderHeight = Constants.cellHeights
         
         weatherDataProvider.delegate = self
         

@@ -26,8 +26,10 @@ class DetailedWeatherForecastViewController: UIViewController {
         
         forecastTableView.dataSource = detailedWeatherDataProvider
         forecastTableView.delegate = detailedWeatherDataProvider
+        forecastTableView.tableFooterView = UIView()
         
         let fileName = cityName?.lowercased().replacingOccurrences(of: " ", with: "")
+        
         detailedWeatherDataProvider.fetchFor(fileName) { [weak self] (result) in
             switch result {
             case .success:
